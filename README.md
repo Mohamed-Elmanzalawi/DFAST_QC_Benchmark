@@ -10,14 +10,14 @@ This repository contains scripts to replicate [DFAST_QC v1.0.0](https://github.c
 
 ## Dependencies
 - [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc). Please ensure you are using version 1.0.0 as any change in the version might yield different results or errors.
-- [Pandas](https://github.com/pandas-dev/pandas) as it is needed for the final Excel files.
+- [Pandas](https://github.com/pandas-dev/pandas) as it is needed for the final summary files.
 - The scripts rely on using high-performance computing systems which in our case is [The National institute of genetics (NIG) Supercomputer](https://sc.ddbj.nig.ac.jp/en/). If another HPC was used some parameters for job details should be adjusted accordingly.  
 
 **Under Progress
 ## Detailed Benchmarking steps
  
 ### GenBank analysis:
-**1. Generate the test data using test_datasets_GenBank.ipynb script.**
+**1. Generate the benchmarking data.**
 
 **Before running the script please change the DFAST_QC genome directory pathway to your machine. This is necessary since the script will collect a list of genomes present there and use them in a filtering step**
 ```
@@ -37,7 +37,7 @@ The script will download all the genome assemblies from GenBank using the assemb
 
 - Select only non-type material genomes. (found in assembly_summary_genbank.txt)
 
-- Removing uncultured and unidentified prokaryotes.
+- Removing uncultured and unidentified prokaryotes. (using specific keywords like uncultured,Candidatus .. etc)
 
 - Finally, select one random sample from every species.
 
@@ -48,7 +48,7 @@ This script will also automatically download [dfast_file_downloader.py](https://
 
 Another option is that it provides a dummy data file "genebank_prok_1_per_species_dummy.tsv" containing 5 genome accessions to test the workflow. This allows you to identify and address any errors caused by format changes in the files before processing the full dataset.
 
-**2. Submit a Job to the NIG-SC using run_dfastqc_GenBank.sh.**
+**2. Submit a Job to the NIG-SC.**
 ```
 qsub run_dfastqc_GenBank.sh
 ```
@@ -58,7 +58,7 @@ qsub summary_GenBank_job.sh -a genebank_test_data/genebank_prok_1_per_species_ac
 ```
 Where `-a` is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
 
-**3. Combine all DFAST_QC results to get the summary file using summarize_GenBank_results.py**
+**3. Combine all DFAST_QC results to get the summary file.**
 
 **The script will also select genomes that have reference genomes only using "reference_genomes.tsv" which can be generated using [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc) by the following command:**
 ```
