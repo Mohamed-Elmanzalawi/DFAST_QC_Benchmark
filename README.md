@@ -37,6 +37,11 @@ For example:
 ```
 genome_directory = "/Users/mohamed/Desktop/dfast_qc/dqc_reference/genomes"
 ```
+Then run the script:
+```
+python test_datasets_GenBank.ipynb
+```
+
 The script will download all the genome assemblies from GenBank using the assembly_summary_genbank.txt file and ANI_report_prokaryotes.txt for filtering purposes. Both are available [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/) It then merges these datasets and filters them as follows:
 
 - Retrieve all genomes that are either Bacteria or Archaea. (found in assembly_summary_genbank.txt)
@@ -51,12 +56,10 @@ The script will download all the genome assemblies from GenBank using the assemb
 
 - Finally, select one random sample from every species.
 
-```
-python test_datasets_GenBank.ipynb
-```
+
 This script will also automatically download [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py), which is necessary for downloading the genomes. 
 
-Alternatively, the script also provides a dummy data file named "genebank_prok_1_per_species_dummy.tsv" containing 5 genome accessions. This file serves as a test dataset to validate the workflow, enabling users to detect and resolve any errors caused by format changes in the files before processing the entire dataset.
+Alternatively, the script also provides a **dummy data file named "genebank_prok_1_per_species_dummy.tsv"** containing 5 genome accessions. This file serves as a test dataset to validate the workflow, enabling users to detect and resolve any errors caused by format changes in the files before processing the entire dataset.
 
 **2. Submit a Job to the NIG-SC.**
 ```
@@ -81,16 +84,11 @@ python summarize_GenBank_results.py
 
 ### GTDB analysis:
 **1. Generate the benchmarking data.**
-
-**Before running the script, please update the directory pathway for the DFAST_QC genome directory to match your local machine. This adjustment is essential as the script will compile a list of genomes from this location and utilize them during the filtering process.**
 ```
-genome_directory = "/path/to/dfast_qc/genomes/directory"
+python test_datasets_gtdb.ipynb
 ```
-For example:
-```
-genome_directory = "/Users/mohamed/Desktop/dfast_qc/dqc_reference/genomes"
-```
-
+The script will download genomes from the [genomic catalog of Earth’s microbiome](https://genome.jgi.doe.gov/portal/GEMs/GEMs.home.html) and select 10000 random samples.
+Similar to the GenBank script, it performs functions such as retrieving  [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py) and generating dummy data.
 
 
 
