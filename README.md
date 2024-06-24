@@ -20,7 +20,8 @@ conda install bioconda::dfast_qc=1.0.0
 ```
 conda install anaconda::pandas
 ```
-- The scripts rely on using high-performance computing systems which in our case is [The National institute of genetics (NIG) Supercomputer](https://sc.ddbj.nig.ac.jp/en/). If another HPC was used some parameters for job details (step 2 in GenBank analysis & step * in GTDB analysis) should be adjusted accordingly.  
+- [Genome Taxonomy Database tool kit (GATK-TK)](https://github.com/Ecogenomics/GTDBTk). Please follow their installation procedures. 
+- Some of the scripts are designed to utilize high-performance computing systems. Ours are specifically tailored for [The National institute of genetics (NIG) Supercomputer](https://sc.ddbj.nig.ac.jp/en/). If an alternative HPC system is employed, adjustments may be necessary for certain parameters related to job details, such as those in step 2 of the GenBank analysis and step * in the GTDB analysis.
 
 **Under Progress
 ## Detailed Benchmarking steps
@@ -76,6 +77,18 @@ dqc_admin_tools.py dump_sqlite_db
 After copying the file "reference_genomes.tsv" to the same directory as the script, you may proceed to execute the script.
 ```
 python summarize_GenBank_results.py
+```
+
+### GTDB analysis:
+**1. Generate the benchmarking data.**
+
+**Before running the script, please update the directory pathway for the DFAST_QC genome directory to match your local machine. This adjustment is essential as the script will compile a list of genomes from this location and utilize them during the filtering process.**
+```
+genome_directory = "/path/to/dfast_qc/genomes/directory"
+```
+For example:
+```
+genome_directory = "/Users/mohamed/Desktop/dfast_qc/dqc_reference/genomes"
 ```
 
 
