@@ -14,7 +14,7 @@ This repository contains scripts to replicate [DFAST_QC v1.0.0](https://github.c
 - The scripts rely on using high-performance computing systems which in our case is [The National institute of genetics (NIG) Supercomputer](https://sc.ddbj.nig.ac.jp/en/). If another HPC was used some parameters for job details should be adjusted accordingly.  
 
 Under Progress
-## Benchmarking steps
+## Detailed Benchmarking steps
  
 ### GenBank analysis:
 **1. Generate the test data using test_datasets_GenBank.ipynb script.**
@@ -44,7 +44,9 @@ The script will download all the genome assemblies from GenBank using the assemb
 ```
 python test_datasets_GenBank.ipynb
 ```
-This script will also automatically download [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py), which is necessary for downloading the genomes. Additionally, it provides a dummy data file "genebank_prok_1_per_species_dummy.tsv" containing 5 genome accessions to test the workflow. This allows you to identify and address any errors caused by format changes in the files before processing the full dataset.
+This script will also automatically download [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py), which is necessary for downloading the genomes. 
+
+Another option is that it provides a dummy data file "genebank_prok_1_per_species_dummy.tsv" containing 5 genome accessions to test the workflow. This allows you to identify and address any errors caused by format changes in the files before processing the full dataset.
 
 **2. Submit a Job to the NIG-SC using run_dfastqc_GenBank.sh.**
 ```
@@ -56,11 +58,17 @@ qsub summary_GenBank_job.sh -a genebank_test_data/genebank_prok_1_per_species_ac
 ```
 Where `-a` is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
 
-**3. Combine all DFAST_QC results to get the summary file using summarize_GenBank_results.py ** 
+**3. Combine all DFAST_QC results to get the summary file using summarize_GenBank_results.py**
+
+**The script will also select genomes that have reference genomes only using "reference_genomes.tsv" which can be generated using [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc) by the following command:**
+```
+dqc_admin_tools.py dump_sqlite_db
+```
+Once you have copied the file "reference_genomes.tsv" to the same directory as the script, you can proceed to run the script.
+
 ```
 python summarize_GenBank_results.py
 ```
-**This script will combine the results, and identify the organism name corresponding to each genome accession using assembly_summary_genbank.txt file **
 
 
 
