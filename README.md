@@ -3,7 +3,7 @@ DFAST_QC: Rapid Quality Checking and Taxonomic Identification Tool for Prokaryot
 Repository contributing to the manuscript "DFAST_QC: Rapid Quality Checking and Taxonomic Identification Tool for Prokaryotic Genomes"
 -------------------
 Authors:
-Mohamed Elmanzalawi and Yasuhiro Tanizawa
+Mohamed Elmanzalawi and [Yasuhiro Tanizawa](https://github.com/nigyta)
 
 
 This repository contains scripts to replicate [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc) benchmarking results.
