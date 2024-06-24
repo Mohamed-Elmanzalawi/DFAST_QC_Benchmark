@@ -10,7 +10,16 @@ This repository contains scripts to replicate [DFAST_QC v1.0.0](https://github.c
 
 ## Dependencies
 - [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc). Please ensure you are using version 1.0.0 as any change in the version might yield different results or errors.
+  
+  **You can install [Conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) and run the following command:**
+```
+conda install bioconda::dfast_qc=1.0.0
+```
 - [Pandas](https://github.com/pandas-dev/pandas) as it is needed for the final summary files.
+
+```
+conda install anaconda::pandas
+```
 - The scripts rely on using high-performance computing systems which in our case is [The National institute of genetics (NIG) Supercomputer](https://sc.ddbj.nig.ac.jp/en/). If another HPC was used some parameters for job details (step 2 in GenBank analysis & step * in GTDB analysis) should be adjusted accordingly.  
 
 **Under Progress
