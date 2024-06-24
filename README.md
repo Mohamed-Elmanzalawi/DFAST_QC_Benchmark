@@ -19,7 +19,7 @@ Under Progress
 ### GenBank analysis:
 **1. Generate the test data using test_datasets_GenBank.ipynb script.**
 
-**Before running the script please change the DFAST_QC genome directory pathway to your machine. This is necessary since the script will collect a list genomes present there and use them in a filtering step**
+**Before running the script please change the DFAST_QC genome directory pathway to your machine. This is necessary since the script will collect a list of genomes present there and use them in a filtering step**
 ```
 genome_directory = "/path/to/dfast_qc/genomes/directory"
 ```
@@ -27,11 +27,19 @@ For example:
 ```
 genome_directory = "/Users/mohamed/Desktop/dfast_qc/dqc_reference/genomes"
 ```
-The script will download all the genome assemblies from GenBank using the assembly_summary_genbank.txt file and ANI_report_prokaryotes.txt which is used in filtering. Both can be found [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/). Then filter them in the following manner:
+The script will download all the genome assemblies from GenBank using the assembly_summary_genbank.txt file and ANI_report_prokaryotes.txt which is used in filtering. Both can be found [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/) and merge them. Then filter them in the following manner:
 
-1- Retrieve all genomes that are either Bacteria or Archeae. (using assembly_summary_genbank.txt)
-2- Collect only those genomes with the version status "Latest" and marked as "OK" in the taxonomy check. (using ANI_report_prokaryotes.txt)
-3- 
+- Retrieve all genomes that are either Bacteria or Archaea. (found in assembly_summary_genbank.txt)
+
+- Collect only those genomes with the version status "Latest" and marked as "OK" in the taxonomy check. (found in ANI_report_prokaryotes.txt)
+
+- Exclude genomes found in the DFAST_QC genome directory. (the script will generate the list automatically)
+
+- Select only non-type material genomes. (found in assembly_summary_genbank.txt)
+
+- Removing uncultured and unidentified prokaryotes.
+
+- Finally, select one random sample from every species.
 
 ```
 python test_datasets_GenBank.ipynb
