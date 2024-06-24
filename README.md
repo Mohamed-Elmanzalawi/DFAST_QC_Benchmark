@@ -19,7 +19,7 @@ This repository contains scripts to replicate [DFAST_QC v1.0.0](https://github.c
 ### GenBank analysis:
 **1. Generate the benchmarking data.**
 
-**Before running the script please change the DFAST_QC genome directory pathway to your machine. This is necessary since the script will collect a list of genomes present there and use them in a filtering step**
+**Before running the script, please update the directory pathway for the DFAST_QC genome directory to match your local machine. This adjustment is essential as the script will compile a list of genomes from this location and utilize them during the filtering process.**
 ```
 genome_directory = "/path/to/dfast_qc/genomes/directory"
 ```
@@ -27,7 +27,7 @@ For example:
 ```
 genome_directory = "/Users/mohamed/Desktop/dfast_qc/dqc_reference/genomes"
 ```
-The script will download all the genome assemblies from GenBank using the assembly_summary_genbank.txt file and ANI_report_prokaryotes.txt which is used in filtering. Both can be found [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/) and merge them. Then filter them in the following manner:
+The script will download all the genome assemblies from GenBank using the assembly_summary_genbank.txt file and ANI_report_prokaryotes.txt for filtering purposes. Both are available [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/) It then merges these datasets and filters them as follows:
 
 - Retrieve all genomes that are either Bacteria or Archaea. (found in assembly_summary_genbank.txt)
 
@@ -46,7 +46,7 @@ python test_datasets_GenBank.ipynb
 ```
 This script will also automatically download [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py), which is necessary for downloading the genomes. 
 
-Another option is that it provides a dummy data file "genebank_prok_1_per_species_dummy.tsv" containing 5 genome accessions to test the workflow. This allows you to identify and address any errors caused by format changes in the files before processing the full dataset.
+Alternatively, the script also provides a dummy data file named "genebank_prok_1_per_species_dummy.tsv" containing 5 genome accessions. This file serves as a test dataset to validate the workflow, enabling users to detect and resolve any errors caused by format changes in the files before processing the entire dataset.
 
 **2. Submit a Job to the NIG-SC.**
 ```
@@ -64,8 +64,7 @@ Where `-a` is the path to the dummy data or any species accession data. If not p
 ```
 dqc_admin_tools.py dump_sqlite_db
 ```
-Once you have copied the file "reference_genomes.tsv" to the same directory as the script, you can proceed to run the script.
-
+After copying the file "reference_genomes.tsv" to the same directory as the script, you may proceed to execute the script.
 ```
 python summarize_GenBank_results.py
 ```
