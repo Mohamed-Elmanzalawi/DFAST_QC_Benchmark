@@ -17,13 +17,28 @@ Under Progress
 ## Benchmarking steps
  
 ### GenBank analysis:
-1. Generate the test data using test_datasets_GenBank.ipynb script.
+**1. Generate the test data using test_datasets_GenBank.ipynb script.**
+
+**Before running the script please change the DFAST_QC genome directory pathway to your machine. This is necessary since the script will collect a list genomes present there and use them in a filtering step**
+```
+genome_directory = "/path/to/dfast_qc/genomes/directory"
+```
+For example:
+```
+genome_directory = "/Users/mohamed/Desktop/dfast_qc/dqc_reference/genomes"
+```
+The script will download all the genome assemblies from GenBank using the assembly_summary_genbank.txt file and ANI_report_prokaryotes.txt which is used in filtering. Both can be found [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/). Then filter them in the following manner:
+
+1- Retrieve all genomes that are either Bacteria or Archeae. (using assembly_summary_genbank.txt)
+2- Collect only those genomes with the version status "Latest" and marked as "OK" in the taxonomy check. (using ANI_report_prokaryotes.txt)
+3- 
+
 ```
 python test_datasets_GenBank.ipynb
 ```
-This script will automatically download [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py), which is necessary for downloading the genomes. Additionally, it provides a dummy data file "genebank_prok_1_per_species_dummy.tsv" containing 5 genome accessions to test the workflow. This allows you to identify and address any errors caused by format changes in the files before processing the full dataset.
+This script will also automatically download [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py), which is necessary for downloading the genomes. Additionally, it provides a dummy data file "genebank_prok_1_per_species_dummy.tsv" containing 5 genome accessions to test the workflow. This allows you to identify and address any errors caused by format changes in the files before processing the full dataset.
 
-2. Submit a Job to the NIG-SC using run_dfastqc_GenBank.sh.
+**2. Submit a Job to the NIG-SC using run_dfastqc_GenBank.sh.**
 ```
 qsub run_dfastqc_GenBank.sh
 ```
@@ -33,8 +48,11 @@ qsub summary_GenBank_job.sh -a genebank_test_data/genebank_prok_1_per_species_ac
 ```
 Where `-a` is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
 
-3. 
-
+**3. Combine all DFAST_QC results to get the summary file using summarize_GenBank_results.py ** 
+```
+python summarize_GenBank_results.py
+```
+**This script will combine the results, and identify the organism name corresponding to each genome accession using assembly_summary_genbank.txt file **
 
 
 
