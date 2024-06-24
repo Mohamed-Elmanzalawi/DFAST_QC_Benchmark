@@ -8,6 +8,11 @@ Mohamed Elmanzalawi and Yasuhiro Tanizawa
 
 This repository contains scripts to replicate [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc) benchmarking results.
 
-## Prerequisites
+## Dependencies
 - [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc). Please ensure you are using version 1.0.0 as any change in the version might yield different results or errors.
-- [Pandas](https://github.com/pandas-dev/pandas).
+- [Pandas](https://github.com/pandas-dev/pandas) as it is needed for the final Excel files.
+
+Under Progress
+## Files Info
+ 
+### RefSeq analysis scripts:
