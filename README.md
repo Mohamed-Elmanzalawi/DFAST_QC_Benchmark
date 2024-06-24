@@ -13,7 +13,7 @@ This repository contains scripts to replicate [DFAST_QC v1.0.0](https://github.c
 - [Pandas](https://github.com/pandas-dev/pandas) as it is needed for the final Excel files.
 - The scripts rely on using high-performance computing systems which in our case is [The National institute of genetics (NIG) Supercomputer](https://sc.ddbj.nig.ac.jp/en/). If another HPC was used some parameters for job details should be adjusted accordingly.  
 
-Under Progress
+**Under Progress
 ## Detailed Benchmarking steps
  
 ### GenBank analysis:
