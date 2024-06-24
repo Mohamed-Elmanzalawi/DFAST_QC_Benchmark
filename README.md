@@ -42,7 +42,7 @@ Then run the script:
 python test_datasets_GenBank.ipynb
 ```
 
-The script will download all the genome assemblies from GenBank using the assembly_summary_genbank.txt file and ANI_report_prokaryotes.txt for filtering purposes. Both are available [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/) It then merges these datasets and filters them as follows:
+The script will download all the genome assemblies from GenBank using the assembly_summary_genbank.txt file and ANI_report_prokaryotes.txt for filtering purposes. Both are available [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/). It then merges these datasets and filters them as follows:
 
 - Retrieve all genomes that are either Bacteria or Archaea. (found in assembly_summary_genbank.txt)
 
