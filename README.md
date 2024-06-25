@@ -15,12 +15,16 @@ This repository contains scripts to replicate [DFAST_QC v1.0.0](https://github.c
 ```
 conda install bioconda::dfast_qc=1.0.0
 ```
-- [Pandas v2.2.0](https://github.com/pandas-dev/pandas) as it is needed for the final summary files.
+- [Pandas v2.2.0](https://github.com/pandas-dev/pandas) for creating the final summary files.
 
 ```
 conda install anaconda::pandas=2.2.0 
 ```
-- [Genome Taxonomy Database tool kit (GATK-TK) v2.4.0](https://github.com/Ecogenomics/GTDBTk). Please follow their installation procedures. 
+- [Ipython](https://github.com/ipython/ipython) for creating the test data files.
+```
+conda install conda-forge::ipython=8.12.0 
+```
+- **[Genome Taxonomy Database tool kit (GATK-TK) v2.4.0](https://github.com/Ecogenomics/GTDBTk)**. Please follow their installation procedures. 
 - Some of the scripts are designed to utilize high-performance computing systems. Ours are specifically tailored for [The National Institute of Genetics (NIG) Supercomputer](https://sc.ddbj.nig.ac.jp/en/). If an alternative HPC system is employed, adjustments may be necessary for certain parameters related to job details, such as those in step 2 of the GenBank analysis and step * in the GTDB analysis.
 
 **Under Progress
@@ -39,7 +43,7 @@ genome_directory = "/Users/mohamed/Desktop/dfast_qc/dqc_reference/genomes"
 ```
 Then run the script:
 ```
-python test_datasets_GenBank.ipynb
+python test_datasets_GenBank.py
 ```
 
 The script will download all the genome assemblies from GenBank using the assembly_summary_genbank.txt file and ANI_report_prokaryotes.txt for filtering purposes. Both are available [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/). It then merges these datasets and filters them as follows:
