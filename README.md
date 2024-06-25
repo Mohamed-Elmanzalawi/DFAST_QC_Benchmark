@@ -42,7 +42,7 @@ Then run the script:
 python test_datasets_GenBank.py
 ```
 
-The script will download all the genome assemblies from GenBank using the assembly_summary_genbank.txt file and ANI_report_prokaryotes.txt for filtering purposes. Both are available [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/). It then merges these datasets and filters them as follows:
+The script will download all the genome assemblies from GenBank from the assembly_summary_genbank.txt file using a modified version of [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py). Also ANI_report_prokaryotes.txt will be downloaded for filtering purposes. Both are available [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/). It then merges these datasets and filters them as follows:
 
 - Retrieve all genomes that are either Bacteria or Archaea. (found in assembly_summary_genbank.txt)
 
@@ -69,13 +69,13 @@ Alternatively, the script also provides a **dummy data file named "genebank_prok
 
 Then You can run the script.
 ```
-qsub run_dfastqc_GenBank.sh
+qsub run_dfastqc_GenBank.sh 
 ```
-In case you want to use the dummy data run the following command:
+In case you want to use the dummy data run the following command
 ```
-qsub run_dfastqc_GenBank.sh -a genebank_test_data/genebank_prok_1_per_species_accession_dummy.tsv
+qsub run_dfastqc_GenBank.sh genebank_test_data/genebank_prok_1_per_species_accession_dummy.tsv
 ```
-Where `-a` is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
+Where the first argument is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
 
 **3. Combine all DFAST_QC results to get the summary file.**
 
