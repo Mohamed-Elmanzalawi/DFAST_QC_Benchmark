@@ -20,10 +20,6 @@ conda install bioconda::dfast_qc=1.0.0
 ```
 conda install anaconda::pandas=2.2.0 
 ```
-- [Ipython](https://github.com/ipython/ipython) for creating the test data files.
-```
-conda install conda-forge::ipython=8.12.0 
-```
 - **[Genome Taxonomy Database tool kit (GATK-TK) v2.4.0](https://github.com/Ecogenomics/GTDBTk)**. Please follow their installation procedures. 
 - Some of the scripts are designed to utilize high-performance computing systems. Ours are specifically tailored for [The National Institute of Genetics (NIG) Supercomputer](https://sc.ddbj.nig.ac.jp/en/). If an alternative HPC system is employed, adjustments may be necessary for certain parameters related to job details, such as those in step 2 of the GenBank analysis and step * in the GTDB analysis.
 
