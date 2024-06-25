@@ -63,7 +63,7 @@ Alternatively, the script also provides a **dummy data file named "genebank_prok
 
 **2. Submit a Job to the NIG-SC.**
 
-**Don't forget to change  number of genomes in ```[#$ -t {number_of_genomes}]```. The number is provided once you finish running test_datasets_GenBank.py.**
+**Don't forget to change the number of genomes in argument```[#$ -t {number_of_genomes}]``` in the job script run_dfastqc_GenBank.sh. The number is provided once you finish running test_datasets_GenBank.py.**
 
 **Example: ```[#$ -t 9000]```**
 
