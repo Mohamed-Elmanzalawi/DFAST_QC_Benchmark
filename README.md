@@ -28,19 +28,10 @@ conda install anaconda::pandas=2.2.0
  
 ### GenBank analysis:
 **1. Generate the benchmarking data.**
-
-**Before running the script, please update the directory pathway for the DFAST_QC genome directory to match your local machine. This adjustment is essential as the script will compile a list of genomes from this location and utilize them during the filtering process.**
 ```
-genome_directory = "/path/to/dfast_qc/genomes/directory"
+python test_datasets_GenBank.py -g path/to/dfast_qc/genome/directory
 ```
-For example:
-```
-genome_directory = "/Users/mohamed/Desktop/dfast_qc/dqc_reference/genomes"
-```
-Then run the script:
-```
-python test_datasets_GenBank.py
-```
+**Here ```-g``` is the pathway for the DFAST_QC genome directory. This is essential as the script will compile a list of genomes from this location and utilize them during the filtering process.**
 
 The script will download all the genome assemblies from GenBank from the assembly_summary_genbank.txt file using a modified version of [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py). Also ANI_report_prokaryotes.txt will be downloaded for filtering purposes. Both are available [here](https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/). It then merges these datasets and filters them as follows:
 
@@ -75,7 +66,7 @@ In case you want to use the dummy data run the following command
 ```
 qsub run_dfastqc_GenBank.sh genebank_test_data/genebank_prok_1_per_species_accession_dummy.tsv
 ```
-Where the first argument is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
+The first argument is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
 
 **3. Combine all DFAST_QC results to get the summary file.**
 
