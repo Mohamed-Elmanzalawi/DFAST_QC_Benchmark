@@ -62,6 +62,12 @@ This script will also automatically download [dfast_file_downloader.py](https://
 Alternatively, the script also provides a **dummy data file named "genebank_prok_1_per_species_dummy.tsv"** containing 5 genome accessions. This file serves as a test dataset to validate the workflow, enabling users to detect and resolve any errors caused by format changes in the files before processing the entire dataset.
 
 **2. Submit a Job to the NIG-SC.**
+
+**Don't forget to change  number of genomes in ```[#$ -t {number_of_genomes}]```. The number is provided once you finish running test_datasets_GenBank.py.**
+
+**Example: ```[#$ -t 9000]```**
+
+Then You can run the script.
 ```
 qsub run_dfastqc_GenBank.sh
 ```
