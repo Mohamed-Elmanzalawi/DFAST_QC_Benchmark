@@ -73,7 +73,7 @@ qsub run_dfastqc_GenBank.sh
 ```
 In case you want to use the dummy data run the following command:
 ```
-qsub summary_GenBank_job.sh -a genebank_test_data/genebank_prok_1_per_species_accession_dummy.tsv
+qsub run_dfastqc_GenBank.sh -a genebank_test_data/genebank_prok_1_per_species_accession_dummy.tsv
 ```
 Where `-a` is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
 
