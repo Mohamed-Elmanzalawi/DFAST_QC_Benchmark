@@ -1,4 +1,4 @@
-DFAST_QC: Rapid Quality Checking and Taxonomic Identification Tool for Prokaryotic Genomes
+DFAST_QC: Quality Checking and Taxonomic Identification Tool for Prokaryotic Genomes
 ===================
 Repository contributing to the manuscript "DFAST_QC: Rapid Quality Checking and Taxonomic Identification Tool for Prokaryotic Genomes"
 -------------------
