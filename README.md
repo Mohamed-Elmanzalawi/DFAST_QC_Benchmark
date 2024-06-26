@@ -84,7 +84,7 @@ python summarize_GenBank_results.py -r DQC_genebank_results/ -as genbank_test_da
 
 **```-ani``` is the pathway for ANI_report_prokaryotes.txt file.**
 
-You can also run using the NIG-SC by running the following job:
+You can also run it using the NIG-SC by running the following job:
 ```
 qsub summary_GenBank_job.sh
 ```
