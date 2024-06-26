@@ -52,7 +52,7 @@ This script will also automatically download [dfast_file_downloader.py](https://
 
 Alternatively, the script also provides a **dummy data file named "genebank_prok_1_per_species_dummy.tsv"** containing 5 genome accessions. This file serves as a test dataset to validate the workflow, enabling users to detect and resolve any errors caused by format changes in the files before processing the entire dataset.
 
-**2. Submit a Job to the NIG-SC.**
+**2. Submit a Job to the NIG-SC to get DFAST_QC results.**
 
 **Don't forget to change the number of genomes in argument```[#$ -t {number_of_genomes}]``` in the job script run_dfastqc_GenBank.sh. The number is provided once you finish running test_datasets_GenBank.py.**
 
@@ -89,14 +89,40 @@ You can also run using the NIG-SC by running the following job:
 qsub summary_GenBank_job.sh
 ```
 
-### GTDB analysis:
+### GEMs analysis:
+Genomic catalog of Earth’s microbiomes (GEMS)
+
 **1. Generate the benchmarking data.**
 ```
-python test_datasets_gtdb.ipynb
+python test_datasets_GEM.py
 ```
 The script will download genomes from the [genomic catalog of Earth’s microbiome](https://genome.jgi.doe.gov/portal/GEMs/GEMs.home.html) and select 10000 random samples.
 Similar to the GenBank script, it performs functions such as retrieving  [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py) and generating dummy data.
 
+**2. Submit a Job to the NIG-SC to get DFAST_QC results.**
+```
+qsub run_dfastqc_GEM.sh
+```
+In case you want to use the dummy data run the following command
+```
+qsub run_dfastqc_GEM.sh gem_test_data/gem_mags_10000_ID_list_dummy.tsv
+```
+The first argument is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
+
+**3. Submit a Job to the NIG-SC to get GTDB-TK results.**
+```
+qsub run_gtdbtk_GEM.sh
+```
+
+**3. Combine all GTDB-TK results into one file.**
+```
+python summarize_GTDBtk_results.py
+```
+
+**4. Combine both GTDB-TK final result file and DFASt_QC to get the summary file.**
+```
+python summarize_GEM_results.py
+```
 
 
 
