@@ -35,7 +35,7 @@ GENOME_DIR_ROOT=${main_dir}/genomes_genebank
 GENOME_FASTA=${GENOME_DIR_ROOT}/${ACCESSION}.fna
 
 if [ -z "$1" ]; then
-    dfast_qc_dir="$2"
+    dfast_qc_dir="$1"
     #RefSeq & GTDB Taxonomy search
    ${dfast_qc_dir}/dfast_qc  -i ${GENOME_FASTA} -o DQC_genebank_results/${NUM2}_${ACCESSION} --force -r /home/melmanzalawi/dfast_qc/dqc_reference  --enable_gtdb
 

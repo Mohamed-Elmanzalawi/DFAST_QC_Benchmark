@@ -8,6 +8,18 @@ Mohamed Elmanzalawi and [Yasuhiro Tanizawa](https://github.com/nigyta)
 
 This repository contains scripts to replicate [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc) benchmarking results.
 
+**General note: in our benchmark analysis all the tools were installed in a conda environemnt called "dfast_qc". In each of these scripts we activate the conda enviroment.**
+The scripts:
+- run_dfastqc_GEM.sh
+
+- run_dfastqc_GenBank.sh
+
+- run_gtdbtk_GEM.sh
+
+- summary_GenBank_job.sh
+
+** So either delete the conda activaton line in these scripts or create "dfast_qc" conda eniroment and install all the Dependencies**
+
 ## Dependencies
 - [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc). Please ensure you are using version 1.0.0 as any change in the version might yield different results or errors.
   
@@ -66,7 +78,9 @@ In case you want to use the dummy data run the following command
 ```
 qsub run_dfastqc_GenBank.sh genebank_test_data/genebank_prok_1_per_species_accession_dummy.tsv
 ```
-The first argument is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
+- The First argument is the path to the DFAST_QC directory. If not specified the script will assume it is in the home directory.
+
+- The second argument is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
 
 **3. Combine all DFAST_QC results to get the summary file.**
 
@@ -107,7 +121,9 @@ In case you want to use the dummy data run the following command
 ```
 qsub run_dfastqc_GEM.sh gem_test_data/gem_mags_5_ID_list_dummy.tsv
 ```
-The first argument is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
+- The First argument is the path to the DFAST_QC directory. If not specified the script will assume it is in the home directory.
+
+- The second argument is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
 
 **3. Submit a Job to the NIG-SC to get GTDB-TK results.**
 ```

@@ -8,7 +8,7 @@
 #$ -tc 40
 
 conda activate dfast_qc
-
+export OMP_NUM_THREADS=1
 
 # Extract task ID
 NUM=$SGE_TASK_ID
@@ -20,7 +20,7 @@ genebank_test_data=${main_dir}/gem_test_data
 
 # Input file containing genome accessions
 if [ -z "$2" ]; then
-    GENOMELIST="$1"
+    GENOMELIST="$2"
 else
     GENOMELIST=${genebank_test_data}/gem_mags_10000_ID_list.tsv
 fi
@@ -43,9 +43,17 @@ gunzip ${GENOME_DIR}/${GENOME_ID}.fna.gz
 
 GENOME_FASTA=${GENOME_DIR}/${GENOME_ID}.fna
 
-#RefSeq & GTDB Taxonomy search
-export OMP_NUM_THREADS=1
-/home/melmanzalawi/dfast_qc/dfast_qc -i ${GENOME_FASTA} -o DQC_GEM_results/${NUM2}_${GENOME_ID} --force -r /home/melmanzalawi/dfast_qc/dqc_reference --enable_gtdb 
+if [ -z "$1" ]; then
+    dfast_qc_dir="$1"
+    #RefSeq & GTDB Taxonomy search
+    ${dfast_qc_dir}/dfast_qc -i ${GENOME_FASTA} -o DQC_GEM_results/${NUM2}_${GENOME_ID} --force -r /home/melmanzalawi/dfast_qc/dqc_reference --enable_gtdb 
 
-#MASH GTDB Taxonomy search
-mash dist /home/melmanzalawi/dfast_qc/dqc_reference/gtdb_genomes_sketch.msh ${GENOME_FASTA} > DQC_GEM_results/${NUM2}_${GENOME_ID}/distances_gtdb.tab
+    #MASH GTDB Taxonomy search
+    mash dist ${dfast_qc_dir}/dfast_qc/dqc_reference/gtdb_genomes_sketch.msh ${GENOME_FASTA} > DQC_GEM_results/${NUM2}_${GENOME_ID}/distances_gtdb.tab
+else
+    #RefSeq & GTDB Taxonomy search - default
+    ~/dfast_qc/dfast_qc -i ${GENOME_FASTA} -o DQC_GEM_results/${NUM2}_${GENOME_ID} --force -r /home/melmanzalawi/dfast_qc/dqc_reference --enable_gtdb 
+
+    #MASH GTDB Taxonomy search - default
+    mash dist ~/dfast_qc/dqc_reference/gtdb_genomes_sketch.msh ${GENOME_FASTA} > DQC_GEM_results/${NUM2}_${GENOME_ID}/distances_gtdb.tab
+fi
