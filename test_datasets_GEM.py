@@ -64,4 +64,7 @@ df10000.to_csv("gem_test_data/gem_mags_5_dummy.tsv", header=True, index=False, s
 df10000_dummy.to_csv("gem_test_data/gem_mags_5_ID_list_dummy.tsv", columns=["genome_id", "sub_dir"], header=False, index=False, sep="\t")
 logger.info("Done")
 
-
+# Number of genomes to be adjusted in the HPC job file.
+number_of_genomes = df10000.shape[0]
+logger.info(rf"Please adjust the [#$ -t] in run_dfastqc_GEM.sh to [#$ -t {number_of_genomes}]. For dummy data, adjust to [#$ -t 5].")
+logger.info("===== Script Done =====")

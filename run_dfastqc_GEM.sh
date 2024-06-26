@@ -17,6 +17,12 @@ NUM2=`printf %05d $NUM`
 #Main directories
 main_dir=$(pwd)
 genebank_test_data=${main_dir}/gem_test_data
+if [ -z "$1" ]; then
+    dfast_qc_dir="$1"
+else
+    echo "Please provide the path to the dfast_qc directory"
+    exit 1
+fi
 
 # Input file containing genome accessions
 if [ -z "$2" ]; then
@@ -43,17 +49,8 @@ gunzip ${GENOME_DIR}/${GENOME_ID}.fna.gz
 
 GENOME_FASTA=${GENOME_DIR}/${GENOME_ID}.fna
 
-if [ -z "$1" ]; then
-    dfast_qc_dir="$1"
-    #RefSeq & GTDB Taxonomy search
-    ${dfast_qc_dir}/dfast_qc -i ${GENOME_FASTA} -o DQC_GEM_results/${NUM2}_${GENOME_ID} --force -r /home/melmanzalawi/dfast_qc/dqc_reference --enable_gtdb 
+#RefSeq & GTDB Taxonomy search
+${dfast_qc_dir}/dfast_qc -i ${GENOME_FASTA} -o DQC_GEM_results/${NUM2}_${GENOME_ID} --force -r /home/melmanzalawi/dfast_qc/dqc_reference --enable_gtdb 
 
-    #MASH GTDB Taxonomy search
-    mash dist ${dfast_qc_dir}/dfast_qc/dqc_reference/gtdb_genomes_sketch.msh ${GENOME_FASTA} > DQC_GEM_results/${NUM2}_${GENOME_ID}/distances_gtdb.tab
-else
-    #RefSeq & GTDB Taxonomy search - default
-    ~/dfast_qc/dfast_qc -i ${GENOME_FASTA} -o DQC_GEM_results/${NUM2}_${GENOME_ID} --force -r /home/melmanzalawi/dfast_qc/dqc_reference --enable_gtdb 
-
-    #MASH GTDB Taxonomy search - default
-    mash dist ~/dfast_qc/dqc_reference/gtdb_genomes_sketch.msh ${GENOME_FASTA} > DQC_GEM_results/${NUM2}_${GENOME_ID}/distances_gtdb.tab
-fi
+#MASH GTDB Taxonomy search
+mash dist ${dfast_qc_dir}/dfast_qc/dqc_reference/gtdb_genomes_sketch.msh ${GENOME_FASTA} > DQC_GEM_results/${NUM2}_${GENOME_ID}/distances_gtdb.tab
