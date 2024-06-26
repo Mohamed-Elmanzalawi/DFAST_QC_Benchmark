@@ -1,4 +1,4 @@
-# Description: GenBank Dataset for evaluation of Taxonomy check generation script. 
+# Description: GenBank Dataset generation script for evaluation of Taxonomy check. 
 import pandas as pd
 import os
 import subprocess
