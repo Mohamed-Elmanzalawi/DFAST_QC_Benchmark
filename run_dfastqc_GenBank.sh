@@ -30,12 +30,13 @@ if [ -z "$2" ]; then
 else
     GENOMELIST="$2"
 fi
+
 ACCESSION=`cat $GENOMELIST |head -$NUM |tail -1`
 
 # Directory for storing downloaded genomes
 GENOME_DIR_ROOT=${main_dir}/genomes_genebank
 
-
+# Downloading the genomes.
 ./dfast_file_downloader.py --assembly_fasta ${ACCESSION} --out $GENOME_DIR_ROOT
 
 GENOME_FASTA=${GENOME_DIR_ROOT}/${ACCESSION}.fna
