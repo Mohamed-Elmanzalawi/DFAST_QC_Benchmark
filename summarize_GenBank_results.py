@@ -152,7 +152,7 @@ def summary_results(result_folder,assembly_summary,ani_report):
     # Merge DataFrames on the common accession columns and keep only the desired column
     df = pd.merge(df, ANI_Report[['# genbank-accession','taxonomy-check-status','declared-type-ANI','best-match-species-taxid','comment','best-match-status']], left_on='query_accession', right_on='# genbank-accession', how='left')
     df = df.drop('# genbank-accession', axis=1)
-    assembly_genebank = pd.read_csv(assembly_summary, sep = "\t",skiprows=[0])
+    assembly_genebank = pd.read_csv(assembly_summary, sep = "\t",skiprows=[0],dtype={34: str, 35: str, 36: str})
     df = pd.merge(df, assembly_genebank[['#assembly_accession','relation_to_type_material']], left_on='query_accession', right_on='#assembly_accession', how='left')
     df = df.drop('#assembly_accession', axis=1)  
 
