@@ -8,6 +8,7 @@
 #$ -tc 40
 
 conda activate dfast_qc
+export OMP_NUM_THREADS=1
 
 # Extract task ID
 NUM=$SGE_TASK_ID
@@ -16,7 +17,6 @@ NUM2=`printf %04d $NUM`
 #Main directories
 main_dir=$(pwd)
 genebank_test_data=${main_dir}/genbank_test_data
-
 
 # Input file containing genome accessions
 if [ -z "$2" ]; then
@@ -29,7 +29,6 @@ ACCESSION=`cat $GENOMELIST |head -$NUM |tail -1`
 # Directory for storing downloaded genomes
 GENOME_DIR_ROOT=${main_dir}/genomes_genebank
 
-export OMP_NUM_THREADS=1
 
 ./dfast_file_downloader.py --assembly_fasta ${ACCESSION} --out $GENOME_DIR_ROOT
 
@@ -46,7 +45,7 @@ else
     #RefSeq & GTDB Taxonomy search - default
     ~/dfast_qc/dfast_qc  -i ${GENOME_FASTA} -o DQC_genebank_results/${NUM2}_${ACCESSION} --force -r /home/melmanzalawi/dfast_qc/dqc_reference  --enable_gtdb
 
-    #MASH RefSeq Taxonomy search
+    #MASH RefSeq Taxonomy search - default
     mash dist ~/dfast_qc/dqc_reference/ref_genomes_sketch.msh ${GENOME_FASTA} > DQC_genebank_results/${NUM2}_${ACCESSION}/distances_ref.tab
 fi
 
