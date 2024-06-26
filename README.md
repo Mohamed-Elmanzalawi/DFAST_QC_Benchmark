@@ -84,7 +84,7 @@ python summarize_GenBank_results.py -r DQC_genebank_results/ -as genbank_test_da
 
 **```-ani``` is the pathway for ANI_report_prokaryotes.txt file.**
 
-You can also run using the NIG-SC by running the following job:
+You can also run it using the NIG-SC by running the following job:
 ```
 qsub summary_GenBank_job.sh
 ```
@@ -97,7 +97,7 @@ Genomic catalog of Earth’s microbiomes (GEMS)
 python test_datasets_GEM.py
 ```
 The script will download genomes from the [genomic catalog of Earth’s microbiome](https://genome.jgi.doe.gov/portal/GEMs/GEMs.home.html) and select 10000 random samples.
-Similar to the GenBank script, it performs functions such as retrieving  [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py) and generating dummy data.
+Similar to the GenBank script, it performs functions such as generating dummy data.
 
 **2. Submit a Job to the NIG-SC to get DFAST_QC results.**
 ```
