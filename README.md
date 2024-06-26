@@ -18,7 +18,7 @@ The scripts:
 
 - summary_GenBank_job.sh
 
-**So either delete the conda activation line in these scripts or create "dfast_qc" conda environment and install all the Dependencies**
+**So either delete the conda activation line in these scripts or create a "dfast_qc" conda environment and install all the Dependencies**
 
 ## Dependencies
 - [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc). Please ensure you are using version 1.0.0 as any change in the version might yield different results or errors.
