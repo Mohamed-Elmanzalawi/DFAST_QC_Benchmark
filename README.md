@@ -95,7 +95,7 @@ qsub summary_GenBank_job.sh
 python test_datasets_gtdb.ipynb
 ```
 The script will download genomes from the [genomic catalog of Earth’s microbiome](https://genome.jgi.doe.gov/portal/GEMs/GEMs.home.html) and select 10000 random samples.
-Similar to the GenBank script, it performs functions such as retrieving  [dfast_file_downloader.py](https://github.com/nigyta/dfast_core/blob/master/scripts/dfast_file_downloader.py) and generating dummy data.
+Similar to the GenBank script, it performs functions such as generating dummy data.
 
 
 
