@@ -72,11 +72,11 @@ Alternatively, the script also provides a **dummy data file named "genebank_prok
 
 Then You can run the script.
 ```
-qsub run_dfastqc_GenBank.sh 
+qsub run_dfastqc_GenBank.sh /home/melmanzalawi/dfast_qc
 ```
 In case you want to use the dummy data run the following command
 ```
-qsub run_dfastqc_GenBank.sh genebank_test_data/genebank_prok_1_per_species_accession_dummy.tsv
+qsub run_dfastqc_GenBank.sh /home/melmanzalawi/dfast_qc genebank_test_data/genebank_prok_1_per_species_accession_dummy.tsv
 ```
 - The First argument is the path to the DFAST_QC directory. If not specified the script will assume it is in the home directory.
 
@@ -115,11 +115,11 @@ Similar to the GenBank script, it performs functions such as generating dummy da
 
 **2. Submit a Job to the NIG-SC to get DFAST_QC results.**
 ```
-qsub run_dfastqc_GEM.sh
+qsub run_dfastqc_GEM.sh /home/melmanzalawi/dfast_qc
 ```
 In case you want to use the dummy data run the following command
 ```
-qsub run_dfastqc_GEM.sh gem_test_data/gem_mags_5_ID_list_dummy.tsv
+qsub run_dfastqc_GEM.sh /home/melmanzalawi/dfast_qc gem_test_data/gem_mags_5_ID_list_dummy.tsv
 ```
 - The First argument is the path to the DFAST_QC directory. If not specified the script will assume it is in the home directory.
 
