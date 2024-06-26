@@ -8,7 +8,7 @@ Mohamed Elmanzalawi and [Yasuhiro Tanizawa](https://github.com/nigyta)
 
 This repository contains scripts to replicate [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc) benchmarking results.
 
-**General note: in our benchmark analysis all the tools were installed in a conda environemnt called "dfast_qc". In each of these scripts we activate the conda enviroment.**
+**General note: in our benchmark analysis all the tools were installed in a conda environment called "dfast_qc". In each of these scripts, we activate the conda environment.**
 The scripts:
 - run_dfastqc_GEM.sh
 
@@ -18,7 +18,7 @@ The scripts:
 
 - summary_GenBank_job.sh
 
-** So either delete the conda activaton line in these scripts or create "dfast_qc" conda eniroment and install all the Dependencies**
+**So either delete the conda activation line in these scripts or create "dfast_qc" conda environment and install all the Dependencies**
 
 ## Dependencies
 - [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc). Please ensure you are using version 1.0.0 as any change in the version might yield different results or errors.
