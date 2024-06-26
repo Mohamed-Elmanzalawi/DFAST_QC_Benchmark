@@ -53,4 +53,4 @@ GENOME_FASTA=${GENOME_DIR}/${GENOME_ID}.fna
 ${dfast_qc_dir}/dfast_qc -i ${GENOME_FASTA} -o DQC_GEM_results/${NUM2}_${GENOME_ID} --force -r /home/melmanzalawi/dfast_qc/dqc_reference --enable_gtdb 
 
 #MASH GTDB Taxonomy search
-mash dist ${dfast_qc_dir}/dfast_qc/dqc_reference/gtdb_genomes_sketch.msh ${GENOME_FASTA} > DQC_GEM_results/${NUM2}_${GENOME_ID}/distances_gtdb.tab
+mash dist ${dfast_qc_dir}/dqc_reference/gtdb_genomes_sketch.msh ${GENOME_FASTA} > DQC_GEM_results/${NUM2}_${GENOME_ID}/distances_gtdb.tab

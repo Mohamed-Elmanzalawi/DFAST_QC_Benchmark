@@ -129,7 +129,10 @@ qsub run_dfastqc_GEM.sh /home/melmanzalawi/dfast_qc gem_test_data/gem_mags_5_ID_
 ```
 qsub run_gtdbtk_GEM.sh
 ```
-
+In case you want to use the dummy data run the following command
+```
+qsub run_gtdbtk_GEM.sh dummy
+```
 **3. Combine all GTDB-TK results into one file.**
 ```
 python summarize_GTDBtk_results.py
