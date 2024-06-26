@@ -2,10 +2,13 @@
 #$ -cwd
 #$ -pe def_slot 1
 #$ -l mem_req=8G,s_vmem=8G
-#$ -o logs
-#$ -e logs
+#$ -o logs/
+#$ -e logs/
 #$ -t 1-10000:1
 #$ -tc 40
+
+conda activate dfast_qc
+
 
 # Extract task ID
 NUM=$SGE_TASK_ID
@@ -16,8 +19,8 @@ main_dir=$(pwd)
 genebank_test_data=${main_dir}/gem_test_data
 
 # Input file containing genome accessions
-if [ -z "$1" ]; then
-    GENOMELIST = "$1"
+if [ -z "$2" ]; then
+    GENOMELIST="$1"
 else
     GENOMELIST=${genebank_test_data}/gem_mags_10000_ID_list.tsv
 fi
@@ -37,8 +40,6 @@ mkdir -p ${GENOME_DIR}
 curl https://portal.nersc.gov/GEM/genomes/fna/${GENOME_ID}.fna.gz > ${GENOME_DIR}/${GENOME_ID}.fna.gz
 
 gunzip ${GENOME_DIR}/${GENOME_ID}.fna.gz
-
-conda activate dfast_qc
 
 GENOME_FASTA=${GENOME_DIR}/${GENOME_ID}.fna
 
