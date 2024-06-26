@@ -6,6 +6,10 @@
 #$ -l d_rt=144:00:00
 #$ -l s_rt=144:00:00
 
+# Tip: you can run the following command to excute the script once run_dfastqc_GenBank.sh is done:
+#      qsub -hold_jid run_dfastqc_GenBank.sh summary_GenBank_job.sh
+#      This is for NIG-SC. Other HPC systems will require different formate.
+
 conda activate dfast_qc
 export OMP_NUM_THREADS=1
 
