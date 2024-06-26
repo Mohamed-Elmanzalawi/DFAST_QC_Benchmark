@@ -60,8 +60,8 @@ df10000.to_csv("gem_test_data/gem_mags_10000.tsv", header=True, index=False, sep
 df10000.to_csv("gem_test_data/gem_mags_10000_ID_list.tsv", columns=["genome_id", "sub_dir"], header=False, index=False, sep="\t")
 # Dummy data for testing
 df10000_dummy = df10000.head(5)
-df10000.to_csv("gem_test_data/gem_mags_10000_dummy.tsv", header=True, index=False, sep="\t")
-df10000_dummy.to_csv("gem_test_data/gem_mags_10000_ID_list_dummy.tsv", columns=["genome_id", "sub_dir"], header=False, index=False, sep="\t")
+df10000.to_csv("gem_test_data/gem_mags_5_dummy.tsv", header=True, index=False, sep="\t")
+df10000_dummy.to_csv("gem_test_data/gem_mags_5_ID_list_dummy.tsv", columns=["genome_id", "sub_dir"], header=False, index=False, sep="\t")
 logger.info("Done")
 
 

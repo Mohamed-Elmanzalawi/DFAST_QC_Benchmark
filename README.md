@@ -105,7 +105,7 @@ qsub run_dfastqc_GEM.sh
 ```
 In case you want to use the dummy data run the following command
 ```
-qsub run_dfastqc_GEM.sh gem_test_data/gem_mags_10000_ID_list_dummy.tsv
+qsub run_dfastqc_GEM.sh gem_test_data/gem_mags_5_ID_list_dummy.tsv
 ```
 The first argument is the path to the dummy data or any species accession data. If not provided the script will use the real data generated for the test data script.
 
