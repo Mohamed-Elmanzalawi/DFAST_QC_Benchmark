@@ -76,8 +76,14 @@ dqc_admin_tools.py dump_sqlite_db
 ```
 After copying the file "reference_genomes.tsv" to the same directory as the script, you may proceed to execute the script.
 ```
-python summarize_GenBank_results.py
+python summarize_GenBank_results.py -r DQC_genebank_results/ -as genbank_test_data/assembly_summary_genbank.txt -ani genbank_test_data/ANI_report_prokaryotes.txt 
 ```
+**```-r``` is the pathway for the DFAST_QC results directory.**
+
+**```-as``` is the pathway for assembly_summary_genbank.txt file.**
+
+**```-ani``` is the pathway for ANI_report_prokaryotes.txt file.**
+
 
 ### GTDB analysis:
 **1. Generate the benchmarking data.**
