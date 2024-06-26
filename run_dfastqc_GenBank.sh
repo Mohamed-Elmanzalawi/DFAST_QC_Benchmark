@@ -18,17 +18,17 @@ NUM2=`printf %04d $NUM`
 main_dir=$(pwd)
 genebank_test_data=${main_dir}/genbank_test_data
 if [ -z "$1" ]; then
-    dfast_qc_dir="$1"
-else
     echo "Please provide the path to the dfast_qc directory"
     exit 1
+else
+    dfast_qc_dir="$1"
 fi
 
 # Input file containing genome accessions
 if [ -z "$2" ]; then
-    GENOMELIST="$2"
-else
     GENOMELIST=${genebank_test_data}/genbank_prok_1_per_species_accession.tsv
+else
+    GENOMELIST="$2"
 fi
 ACCESSION=`cat $GENOMELIST |head -$NUM |tail -1`
 
