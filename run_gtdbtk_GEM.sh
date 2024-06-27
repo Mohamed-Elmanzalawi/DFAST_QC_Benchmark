@@ -3,8 +3,8 @@
 #$ -pe def_slot 10
 #$ -l mem_req=150G,s_vmem=150G
 #$ -l medium
-#$ -o logs_gtdbtk
-#$ -e logs_gtdbtk
+#$ -o logs_gtdbtk/
+#$ -e logs_gtdbtk/
 ## -l intel
 
 conda activate dfast_qc
