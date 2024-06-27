@@ -13,6 +13,6 @@
 conda activate dfast_qc
 export OMP_NUM_THREADS=1
 
-main_dir= $(pwd)
-genebank_test_data=${main_dir}/genebank_test_data
-python summarize_genebank_results.py -r ${main_dir}/DQC_genebank_results -as ${genebank_test_data}/assembly_summary_genbank.txt -ani ${genebank_test_data}/ANI_report_prokaryotes.txt
+main_dir=$(pwd)
+genebank_test_data=${main_dir}/genbank_test_data
+python summarize_GenBank_results.py -r ${main_dir}/DQC_genebank_results -as ${genebank_test_data}/assembly_summary_genbank.txt -ani ${genebank_test_data}/ANI_report_prokaryotes.txt

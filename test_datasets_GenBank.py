@@ -37,16 +37,9 @@ def test_data_GeneBank(dfastqc_genome_directory):
     os.makedirs(genbank_test_data, exist_ok=True)
     logger.info("Done")
 
-    # Specify the directory containing our genomes.
-    if dfastqc_genome_directory:
-        genome_directory = dfastqc_genome_directory
-    else:
-        logger.error("Please provide the path to the directory containing the genomes.")
-        exit(1)
-
-    logger.info(f"{genome_directory} is the directory containing the genomes .. creating a list of all genomes.")
+    logger.info(f"{dfastqc_genome_directory} is the directory containing the genomes .. creating a list of all genomes.")
     # List all genomes in the directory.
-    all_genomes = os.listdir(genome_directory)
+    all_genomes = os.listdir(dfastqc_genome_directory)
     for index, genome_file in enumerate(all_genomes):
         # replace ".fna.gz" with blank space.
         all_genomes[index] = genome_file.replace(".fna.gz", "")
