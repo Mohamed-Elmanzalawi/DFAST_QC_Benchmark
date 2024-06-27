@@ -2,8 +2,8 @@
 #$ -cwd
 #$ -pe def_slot 1
 #$ -l mem_req=8G,s_vmem=8G
-#$ -o logs/
-#$ -e logs/
+#$ -o logs_GEM/
+#$ -e logs_GEM/
 #$ -t 1-10000:1
 #$ -tc 40
 
