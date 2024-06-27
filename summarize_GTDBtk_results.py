@@ -1,6 +1,6 @@
 import glob
 
-glob_pat = "GTDBtk_GEM10000_results/*/*.summary.tsv"
+glob_pat = "GTDBtk_GEM_results/*/*.summary.tsv"
 result_files = sorted(glob.glob(glob_pat))
 print(result_files)
 
