@@ -9,7 +9,7 @@ logger.info("===== Starting the script =====")
 
 # Define the header for the summary results
 header = ['query_accession','DFAST_QC_accession', 'DFAST_QC_gtdb_species', 'MASH_accession','DFAST_QC_ani', 'ani_circumscription_radius', 
-          'MASH_distance', 'MASH_ANI', 'DFAST_QC_status', 'MASH_status', "Result_Consistency",'dfastqc_match', 'mash_match','dfastqc_vs_mash(accession)' ]
+          'MASH_distance', 'MASH_ANI', 'DFAST_QC_status', 'MASH_status', "Result_Consistency",'dfastqc_match', 'mash_match','dfastqc_vs_mash_accession' ]
 
 # Define a function to summarize results
 def summary_results(result_folder,GTDB_TK_result):
@@ -62,7 +62,7 @@ def summary_results(result_folder,GTDB_TK_result):
         mash_match = "Match" if MASH_accession == query_accession else "Mismatch"
         Result_Consistency = MASH_status and (DFAST_QC_status == "conclusive")
 
-        dfastqc_vs_mash = "Identical" if MASH_accession == DFAST_QC_accession else "Different"
+        dfastqc_vs_mash_accession = "Identical" if MASH_accession == DFAST_QC_accession else "Different"
 
         # Append results to the dictionary
         for key in combined_dict.keys():
@@ -80,13 +80,19 @@ def summary_results(result_folder,GTDB_TK_result):
     
     # Merge DataFrames on the common accession columns and keep only the desired column
     GTDB_TK_result_file = pd.read_csv(GTDB_TK_result, sep = "\t")
-    results_merged = pd.merge(df, GTDB_TK_result_file[['user_genome','closest_genome_reference','classification','fastani_ani']], left_on='query_accession', right_on='user_genome', how='left')
-    results_merged = df.drop('user_genome', axis=1)
-    results_merged = df.rename(columns={'fastani_ani':'GTDB_tk_fastani_ani'})
+    results_merged = pd.merge(df, GTDB_TK_result_file[['user_genome','closest_genome_reference','classification','closest_genome_ani']], 
+                              left_on='query_accession', 
+                              right_on='user_genome', 
+                              how='left')
+    
+    results_merged.to_csv('tem_result.tsv', sep='\t', index=False)
+    results_merged = results_merged.drop('user_genome', axis=1)
+    results_merged = results_merged.rename(columns={'closest_genome_ani':'GTDB_tk_ani'})
 
     # Checking whether if DFAST_QC or GTBD-TK had a result or not.
-    results_merged["DFAST_QC_assign"] = "assigned" if df["DFAST_QC_accession"] != "-" else 'unassigned'
-    results_merged["GTDB_tk_assign"] = "assigned" if df["GTDB_tk_assign"] != "nan" else 'unassigned'
+    results_merged["DFAST_QC_assign"] = results_merged["DFAST_QC_accession"].apply(lambda x: "assigned" if x != "-" else "unassigned")
+    results_merged["GTDB_tk_assign"] = results_merged["closest_genome_reference"].apply(lambda x: "assigned" if x != "nan" else "unassigned")
+
 
     # Output TSV File
     output_file = "summary_GEM.tsv"
@@ -119,5 +125,5 @@ if __name__ == '__main__':
         return args
 
     args = parse_args()
-    summary_results(args.result_folder, args.gtdb_result)
+    summary_results(args.dfastqc_result_folder, args.gtdb_result)
 
