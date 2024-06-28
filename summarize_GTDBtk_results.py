@@ -18,3 +18,4 @@ for file_name in result_files:
 print(df.shape)
 
 df.to_csv("result_GTDBtk_all.tsv", sep="\t", header=True, index=False)
+print("Saved all the GTDB-tk combined results in result_GTDBtk_all.tsv file.")
