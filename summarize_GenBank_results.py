@@ -9,8 +9,8 @@ basicConfig(level=INFO)
 logger.info("===== Starting the script =====") 
 
 # Define the header for the summary results
-header = ['query_accession', 'query_organism_name', 'query_species_taxid', 'DFAST_QC_organism_name', 'DFAST_QC_species_taxid', 'MASH_organism_name', 'MASH_species_taxid', 
-          'DFAST_QC_ani', 'ani_threshold', 'MASH_distance', 'MASH_ANI', 'DFAST_QC_status', 'MASH_status', "Result_Consistency",'dfastqc_match', 'mash_match', 
+header = ['query_accession', 'query_organism_name', 'query_species_taxid', 'DFAST_QC_organism_name', 'DFAST_QC_species_taxid', 
+          'DFAST_QC_ani', 'ani_threshold', 'DFAST_QC_status', "Result_Consistency",'dfastqc_match', 
           'status_species_taxid','dfastqc_checkm','availability_of_reference_genome']
 
 # Define a function to summarize results
@@ -63,7 +63,6 @@ def summary_results(result_folder,assembly_summary,ani_report):
     # Traverse each directory in the root folder
     for folder_name in os.listdir(result_folder): 
         folder_path = os.path.join(result_folder, folder_name)
-        mash_result = os.path.join(folder_path, "distances_ref.tab")
         dfast_qc_result = os.path.join(folder_path, "tc_result.tsv")
         checkm_file = os.path.join(folder_path, "cc_result.tsv")
         if not os.path.exists(dfast_qc_result):
@@ -95,16 +94,6 @@ def summary_results(result_folder,assembly_summary,ani_report):
                         cc_columns = line.strip().split("\t")
                         dfastqc_checkm = cc_columns[11]
 
-        L = open(mash_result).readlines()
-        L = [line.strip("\n").split("\t") for line in L]
-        L = sorted(L, key=lambda x: float(x[2]))
-        top_hit = L[0][0]
-        MASH_distance = float(L[0][2])
-        MASH_ANI = (1 - MASH_distance) * 100
-        # Access the first element (index 0) to get "GCA_004341945.1"
-        mash_accession = top_hit.split('/')[-1].replace(".fna.gz","")
-
-
         query_accession = folder_name.split('_',1)[1]
         query_organism_name = A_S[query_accession].organism_name
         query_species_taxid = A_S[query_accession].species_taxid
@@ -114,15 +103,8 @@ def summary_results(result_folder,assembly_summary,ani_report):
         else:
             DFAST_QC_organism_name, DFAST_QC_species_taxid, DFAST_QC_ani, ani_threshold, DFAST_QC_status= first_line[0], first_line[4], first_line[7], first_line[10], first_line[11]
         
-        MASH_organism_name = A_S[mash_accession].organism_name
-        MASH_species_taxid = A_S[mash_accession].species_taxid
-        MASH_DISTANCE_THRESHOLD = 0.05
-        MASH_status = (MASH_distance < MASH_DISTANCE_THRESHOLD)
-
 
         dfastqc_match = "Match" if DFAST_QC_species_taxid == query_species_taxid else "Mismatch"
-        mash_match = "Match" if MASH_species_taxid == query_species_taxid else "Mismatch"
-        Result_Consistency = MASH_status and (DFAST_QC_status == "conclusive")
 
         if DFAST_QC_status == "conclusive" and dfastqc_match == "Match":
             status_species_taxid = "conclusive_match"
