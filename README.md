@@ -10,13 +10,13 @@ This repository contains scripts to replicate [DFAST_QC v1.0.0](https://github.c
 
 **General note: in our benchmark analysis all the tools were installed in a conda environment called "dfast_qc". In each of these scripts, we activate the conda environment.**
 The scripts:
-- run_dfastqc_GEM.sh
+- [run_dfastqc_GEM.sh](https://github.com/Mohamed-Elmanzalawi/DFAST_QC_Benchmark/blob/main/run_dfastqc_GEM.sh#L10)
 
-- run_dfastqc_GenBank.sh
+- [run_dfastqc_GenBank.sh](https://github.com/Mohamed-Elmanzalawi/DFAST_QC_Benchmark/blob/main/run_dfastqc_GenBank.sh#L10)
 
-- run_gtdbtk_GEM.sh
+- [run_gtdbtk_GEM.sh](https://github.com/Mohamed-Elmanzalawi/DFAST_QC_Benchmark/blob/main/run_gtdbtk_GEM.sh#L10)
 
-- summary_GenBank_job.sh
+- [summary_GenBank_job.sh](https://github.com/Mohamed-Elmanzalawi/DFAST_QC_Benchmark/blob/main/run_dfastqc_GenBank.sh#L10)
 
 **So either delete the conda activation line in these scripts or create a "dfast_qc" conda environment and install all the Dependencies**
 
