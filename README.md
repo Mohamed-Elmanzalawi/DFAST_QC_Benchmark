@@ -24,6 +24,10 @@ The scripts:
 ```
 conda env create -f dfast_qc.yml
 ```
+After activating the conda env export the path to GTDB-Tk database on your machine. For example:
+```
+export GTDBTK_DATA_PATH=/new/path/to/gtdbtk/db
+```
 
 ## Dependencies
 - [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc). Please ensure you are using version 1.0.0 as any change in the version might yield different results or errors.
