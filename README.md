@@ -18,7 +18,12 @@ The scripts:
 
 - [summary_GenBank_job.sh](https://github.com/Mohamed-Elmanzalawi/DFAST_QC_Benchmark/blob/main/run_dfastqc_GenBank.sh#L10)
 
-**So either delete the conda activation line in these scripts or create a "dfast_qc" conda environment and install all the Dependencies**
+**So either delete the conda activation line in these scripts or create a "dfast_qc" conda environment and install all the Dependencies.**
+
+**The conda env we used is available as yml file which can be used to create it by running the following command:**
+```
+conda env create -f dfast_qc.yml
+```
 
 ## Dependencies
 - [DFAST_QC v1.0.0](https://github.com/nigyta/dfast_qc). Please ensure you are using version 1.0.0 as any change in the version might yield different results or errors.
