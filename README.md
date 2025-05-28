@@ -150,7 +150,7 @@ qsub run_gtdbtk_GEM.sh dummy
 python summarize_GTDBtk_results.py
 ```
 
-**4. Combine both GTDB-TK final result file and DFASt_QC to get the summary file.**
+**4. Combine both GTDB-TK final result file and DFAST_QC to get the summary file.**
 ```
 python summarize_GEM_results.py -r DQC_GEM_results/ -g result_GTDBtk_all.tsv
 ```
