@@ -2,8 +2,8 @@ DFAST_QC: Quality Assessment and Taxonomic Identification Tool for Prokaryotic G
 ===================
 Repository contributing to the manuscript "DFAST_QC: Quality Assessment and Taxonomic Identification Tool for Prokaryotic Genomes"
 
-You can read our manuscript at the following link:
-Elmanzalawi, M., Fujisawa, T., Mori, H., Nakamura, Y., & Tanizawa, Y. (2025). DFAST_QC: Quality assessment and taxonomic identification tool for prokaryotic Genomes. BMC Bioinformatics, 26(1), 3. [![GCB](https://img.shields.io/badge/DOI-10.1101/2024.03.11.584526-21908C.svg)](https://doi.org/10.1186/s12859-024-06030-y)
+You can read our manuscript at the following link:  
+**Elmanzalawi, M., Fujisawa, T., Mori, H., Nakamura, Y., & Tanizawa, Y. (2025). DFAST_QC: Quality assessment and taxonomic identification tool for prokaryotic Genomes. BMC Bioinformatics, 26(1), 3. [![GCB](https://img.shields.io/badge/DOI-10.1101/2024.03.11.584526-21908C.svg)](https://doi.org/10.1186/s12859-024-06030-y)**
 
 -------------------
 Authors:
